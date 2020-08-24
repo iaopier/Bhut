@@ -4,10 +4,11 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,7 @@ import com.apicarros.model.DAOLog;
 import com.apicarros.service.LogService;
 
 @RestController
+@RequestMapping("/api/")
 public class CarrosController {
 
 	@Autowired
@@ -38,7 +40,7 @@ public class CarrosController {
 	}	
 	
 	@RequestMapping(value = "/createCar", method = RequestMethod.POST)
-	public ResponseEntity<?> createCar(@RequestBody CarroDTO carro){
+	public ResponseEntity<?> createCar(@Valid @RequestBody CarroDTO carro){
 		RestTemplate restTemplate = new RestTemplate();
 		// create headers
 	    HttpHeaders headers = new HttpHeaders();
